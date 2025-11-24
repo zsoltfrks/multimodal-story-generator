@@ -243,7 +243,7 @@ def main():
     [Hosszú termékleírás szövege...]
     '''
     summary = ai.summarize_text(product_desc)
-    print(f"\nTerméköszszefoglalás: {summary}")
+    print(f"\nTermékösszefoglalás: {summary}")
     
     # 4. Termékképek automatikus címkézése
     images = ["product1.jpg", "product2.jpg", "product3.jpg"]

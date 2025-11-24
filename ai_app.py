@@ -112,8 +112,12 @@ class HuggingFaceAI:
         
         # URL vagy lokális fájl kezelése
         if image_path_or_url.startswith('http'):
-            response = requests.get(image_path_or_url)
-            image = Image.open(BytesIO(response.content))
+            try:
+                response = requests.get(image_path_or_url, timeout=10)
+                response.raise_for_status()
+                image = Image.open(BytesIO(response.content))
+            except requests.exceptions.RequestException as e:
+                raise ValueError(f"Hiba a kép letöltésekor: {e}")
         else:
             image = Image.open(image_path_or_url)
         

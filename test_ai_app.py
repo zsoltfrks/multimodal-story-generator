@@ -162,7 +162,7 @@ class TestHuggingFaceAI(unittest.TestCase):
         
         # Ellenőrzések
         self.assertEqual(results[0]['label'], 'car')
-        mock_requests.get.assert_called_once_with("http://example.com/car.jpg")
+        mock_requests.get.assert_called_once_with("http://example.com/car.jpg", timeout=10)
 
 
 class TestApplicationStructure(unittest.TestCase):
