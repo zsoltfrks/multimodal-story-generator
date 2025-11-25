@@ -1,66 +1,77 @@
 # ml-practice-research
 
-Practice project for an ML based university project.
+Practice project for an ML-based university project.
 
-## 🤖 Hugging Face AI Alkalmazás
+## 🤖 Hugging Face AI Application
 
-Ez egy multimodális AI alkalmazás, amely a [Hugging Face](https://huggingface.co/models) modelljeivel működik.
+This is a multimodal AI application that uses models from [Hugging Face](https://huggingface.co/models).
 
-### ✨ Funkciók
+### ✨ Features
 
-Az alkalmazás négy fő AI képességet támogat:
+The application supports six main AI capabilities:
 
-1. **Sentiment Analysis (Hangulatelemzés)** - Szövegek érzelmi töltetének elemzése
-2. **Question Answering (Kérdés-válasz)** - Kérdések megválaszolása szöveges kontextus alapján
-3. **Text Summarization (Szöveg összefoglalás)** - Hosszú szövegek automatikus összefoglalása
-4. **Image Classification (Képosztályozás)** - Képeken található objektumok felismerése
+1. **Sentiment Analysis** - Analyze the emotional tone of text
+2. **Question Answering** - Answer questions based on text context
+3. **Text Summarization** - Automatically summarize long texts
+4. **Image Classification** - Recognize objects in images
+5. **Image Captioning (BLIP)** - Generate kid-friendly descriptions of images
+6. **Story Generation** - Create short children's stories from images
 
-### 📋 Telepítés
+### 🎯 Image to Story Generator (New Feature!)
 
-#### Követelmények
-- Python 3.8 vagy újabb
+This application includes a special feature for children: it can take any image and generate a cute children's story based on it!
+
+**How it works:**
+1. Upload or provide an image URL (e.g., forest, animal, playground, fairy tale illustration)
+2. **Model 1 - Image Captioning**: Uses BLIP model to create a detailed, kid-friendly description
+3. **Model 2 - Story Generation**: Uses GPT-2 to generate a short (6-8 sentences) children's story based on the description
+
+### 📋 Installation
+
+#### Requirements
+- Python 3.8 or newer
 - pip package manager
 
-#### Lépések
+#### Steps
 
-1. **Repository klónozása**
+1. **Clone the repository**
 ```bash
 git clone https://github.com/zsoltfrks/ml-practice-research.git
 cd ml-practice-research
 ```
 
-2. **Virtuális környezet létrehozása (ajánlott)**
+2. **Create a virtual environment (recommended)**
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
-# vagy
+# or
 venv\Scripts\activate  # Windows
 ```
 
-3. **Függőségek telepítése**
+3. **Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-### 🚀 Használat
+### 🚀 Usage
 
-#### Demo mód
+#### Demo Mode
 
-A demo mód automatikusan bemutatja mind a négy AI funkciót:
+Demo mode automatically showcases all AI features:
 
 ```bash
 python ai_app.py
 ```
 
-#### Interaktív mód
+#### Interactive Mode
 
-Az interaktív módban saját szövegeket és képeket próbálhatsz ki:
+Interactive mode allows you to try your own texts and images:
 
 ```bash
 python ai_app.py --interactive
 ```
 
-### 📚 Példák
+### 📚 Examples
 
 #### Sentiment Analysis
 ```python
@@ -84,7 +95,7 @@ print(answer['answer'])  # "2016"
 #### Text Summarization
 ```python
 ai = HuggingFaceAI()
-long_text = "..." # hosszú szöveg
+long_text = "..." # long text
 summary = ai.summarize_text(long_text)
 print(summary)
 ```
@@ -93,30 +104,51 @@ print(summary)
 ```python
 ai = HuggingFaceAI()
 results = ai.classify_image("path/to/image.jpg")
-# vagy URL:
+# or URL:
 results = ai.classify_image("https://example.com/image.jpg")
 print(results)
 ```
 
-### 🔧 Használt Modellek
+#### Image Captioning (BLIP)
+```python
+ai = HuggingFaceAI()
+caption = ai.caption_image("path/to/image.jpg")
+print(caption)
+# Example output: "a happy girl walking in a forest with a friendly dog"
+```
 
-Az alkalmazás a következő Hugging Face modelleket használja:
+#### Image to Story (for children)
+```python
+ai = HuggingFaceAI()
+result = ai.image_to_story("path/to/image.jpg")
+print(f"Caption: {result['caption']}")
+print(f"Story: {result['story']}")
+# Example output:
+# Caption: "a happy girl walking in a forest with a friendly dog"
+# Story: "Once upon a time, a happy girl named Emma went for a walk..."
+```
+
+### 🔧 Models Used
+
+The application uses the following Hugging Face models:
 
 - **Sentiment Analysis**: distilbert-base-uncased-finetuned-sst-2-english
 - **Question Answering**: distilbert-base-cased-distilled-squad
 - **Summarization**: facebook/bart-large-cnn
 - **Image Classification**: google/vit-base-patch16-224
+- **Image Captioning**: Salesforce/blip-image-captioning-base
+- **Story Generation**: gpt2
 
-### 📖 További információk
+### 📖 Additional Resources
 
-- [Hugging Face Modellek](https://huggingface.co/models)
-- [Transformers Dokumentáció](https://huggingface.co/docs/transformers)
+- [Hugging Face Models](https://huggingface.co/models)
+- [Transformers Documentation](https://huggingface.co/docs/transformers)
 - [Pipeline API](https://huggingface.co/docs/transformers/main_classes/pipelines)
 
-### 🤝 Közreműködés
+### 🤝 Contributing
 
-Ez egy egyetemi gyakorló projekt. Javaslatokat és fejlesztéseket szívesen fogadunk!
+This is a university practice project. Suggestions and improvements are welcome!
 
-### 📝 Licenc
+### 📝 License
 
 MIT License
