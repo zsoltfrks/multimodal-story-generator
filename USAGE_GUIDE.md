@@ -1,32 +1,34 @@
-# Hugging Face AI Alkalmazás - Részletes Használati Útmutató
+# Hugging Face AI Application - Detailed Usage Guide
 
-## 📖 Bevezetés
+## 📖 Introduction
 
-Ez az alkalmazás négy fő AI funkciót biztosít a Hugging Face Transformers könyvtár használatával:
+This application provides six main AI features using the Hugging Face Transformers library:
 
-1. **Sentiment Analysis** - Szövegek érzelmi töltetének automatikus elemzése
-2. **Question Answering** - Intelligens kérdés-válasz rendszer
-3. **Text Summarization** - Automatikus szövegösszefoglalás
-4. **Image Classification** - Képek tartalmának felismerése
+1. **Sentiment Analysis** - Automatic analysis of text emotional tone
+2. **Question Answering** - Intelligent question-answer system
+3. **Text Summarization** - Automatic text summarization
+4. **Image Classification** - Recognition of image content
+5. **Image Captioning** - Generate descriptions of images using BLIP
+6. **Story Generation** - Create children's stories from images
 
-## 🔧 Telepítés és Beállítás
+## 🔧 Installation and Setup
 
-### Rendszerkövetelmények
+### System Requirements
 
-- **Python**: 3.8 vagy újabb verzió
-- **RAM**: Minimum 4 GB (ajánlott: 8 GB vagy több)
-- **Tárhely**: ~5 GB a modellek cache-eléséhez
-- **Internet**: Szükséges az első futtatáshoz (modellek letöltése)
+- **Python**: 3.8 or newer version
+- **RAM**: Minimum 4 GB (recommended: 8 GB or more)
+- **Storage**: ~5 GB for model caching
+- **Internet**: Required for first run (model download)
 
-### Telepítési Lépések
+### Installation Steps
 
-1. **Repository letöltése**
+1. **Download the repository**
    ```bash
    git clone https://github.com/zsoltfrks/ml-practice-research.git
    cd ml-practice-research
    ```
 
-2. **Virtuális környezet létrehozása (AJÁNLOTT!)**
+2. **Create a virtual environment (RECOMMENDED!)**
    
    Linux/Mac:
    ```bash
@@ -40,112 +42,125 @@ Ez az alkalmazás négy fő AI funkciót biztosít a Hugging Face Transformers k
    venv\Scripts\activate
    ```
 
-3. **Függőségek telepítése**
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
    
-   Ez telepíti:
-   - `transformers` - Hugging Face Transformers könyvtár
+   This installs:
+   - `transformers` - Hugging Face Transformers library
    - `torch` - PyTorch deep learning framework
-   - `pillow` - Képfeldolgozás
-   - `requests` - HTTP kérések kezelése
+   - `pillow` - Image processing
+   - `requests` - HTTP request handling
 
-### Első Futtatás
+### First Run
 
-Az első futtatáskor az alkalmazás automatikusan letölti a szükséges AI modelleket a Hugging Face Hub-ról. Ez a folyamat:
-- Néhány perctől akár 10-15 percig is tarthat
-- Internetkapcsolatot igényel
-- A modelleket a `~/.cache/huggingface/` könyvtárba menti
-- Csak egyszer kell lefutnia, utána offline is működik
+On the first run, the application automatically downloads the necessary AI models from Hugging Face Hub. This process:
+- Can take from a few minutes to 10-15 minutes
+- Requires internet connection
+- Saves models to `~/.cache/huggingface/` directory
+- Only needs to run once, then works offline
 
-## 🚀 Használati Módok
+## 🚀 Usage Modes
 
-### 1. Demo Mód (Automatikus Bemutató)
+### 1. Demo Mode (Automatic Demo)
 
-Ez a legegyszerűbb módja az alkalmazás kipróbálásának:
+This is the easiest way to try the application:
 
 ```bash
 python ai_app.py
 ```
 
-**Mit csinál a demo mód?**
-- Bemutatja mind a négy AI funkciót
-- Előre definiált példákat használ
-- Automatikusan végigfut az összes képességen
-- Kiírja az eredményeket a konzolra
+**What does demo mode do?**
+- Showcases all six AI features
+- Uses predefined examples
+- Automatically runs through all capabilities
+- Outputs results to console
 
-**Várható kimenet:**
+**Expected output:**
 ```
 ============================================================
-🚀 HUGGING FACE AI ALKALMAZÁS
+🚀 HUGGING FACE AI APPLICATION
 ============================================================
 
-💡 Demo mód - különböző AI képességek bemutatása
+💡 Demo mode - showcasing different AI capabilities
 
 ============================================================
 🎭 SENTIMENT ANALYSIS DEMO
 ============================================================
 
-📊 Sentiment Analysis modell betöltése...
-✅ Sentiment Analysis modell betöltve!
+📊 Loading Sentiment Analysis model...
+✅ Sentiment Analysis model loaded!
 
-Szöveg: I love this amazing AI technology! It's fantastic!
-➜ Eredmény: POSITIVE (Bizonyosság: 99.98%)
+Text: I love this amazing AI technology! It's fantastic!
+➜ Result: POSITIVE (Confidence: 99.98%)
 
-Szöveg: This is terrible and disappointing.
-➜ Eredmény: NEGATIVE (Bizonyosság: 99.97%)
+Text: This is terrible and disappointing.
+➜ Result: NEGATIVE (Confidence: 99.97%)
 
-[... további demo eredmények ...]
+[... more demo results ...]
 ```
 
-### 2. Interaktív Mód (Saját Adatok Tesztelése)
+### 2. Interactive Mode (Test Your Own Data)
 
-Az interaktív módban saját szövegeket és képeket próbálhatsz ki:
+Interactive mode allows you to try your own texts and images:
 
 ```bash
 python ai_app.py --interactive
 ```
 
-**Menü navigáció:**
+**Menu navigation:**
 ```
 ============================================================
-🤖 INTERAKTÍV MÓD
+🤖 INTERACTIVE MODE
 ============================================================
 
-Válassz egy funkciót:
+Choose a feature:
 1. Sentiment Analysis
 2. Question Answering
 3. Text Summarization
 4. Image Classification
-0. Kilépés
+5. Image Captioning (BLIP)
+6. Image to Story (for children)
+0. Exit
 
-Választás (0-4): 
+Choice (0-6): 
 ```
 
-**Példa interakció - Sentiment Analysis:**
+**Example interaction - Sentiment Analysis:**
 ```
-Választás (0-4): 1
-Add meg a szöveget: This product exceeded all my expectations!
+Choice (0-6): 1
+Enter the text: This product exceeded all my expectations!
 ➜ POSITIVE (99.87%)
 ```
 
-**Példa interakció - Question Answering:**
+**Example interaction - Question Answering:**
 ```
-Választás (0-4): 2
-Add meg a kontextust: Python was created by Guido van Rossum and first released in 1991.
-Add meg a kérdést: When was Python released?
+Choice (0-6): 2
+Enter the context: Python was created by Guido van Rossum and first released in 1991.
+Enter the question: When was Python released?
 ➜ 1991 (98.45%)
 ```
 
-### 3. Python Kódból (Programozói Használat)
+**Example interaction - Image to Story:**
+```
+Choice (0-6): 6
+Enter the image URL or path: https://example.com/forest.jpg
 
-Saját Python scriptek írásához:
+📷 Caption: a beautiful forest with sunlight filtering through the trees
+
+📖 Story:
+Once upon a time, there was a magical forest where the sunlight danced through the leaves...
+```
+
+### 3. From Python Code (Programmatic Usage)
+
+For writing your own Python scripts:
 
 ```python
 from ai_app import HuggingFaceAI
 
-# AI objektum létrehozása
+# Create AI object
 ai = HuggingFaceAI()
 
 # 1. Sentiment Analysis
@@ -159,7 +174,7 @@ answer = ai.answer_question(context, question)
 print(f"Answer: {answer['answer']}")
 
 # 3. Text Summarization
-long_text = """[hosszú szöveg ide]"""
+long_text = """[long text here]"""
 summary = ai.summarize_text(long_text)
 print(f"Summary: {summary}")
 
@@ -167,50 +182,59 @@ print(f"Summary: {summary}")
 results = ai.classify_image("path/to/image.jpg")
 for r in results[:3]:
     print(f"{r['label']}: {r['score']:.2%}")
+
+# 5. Image Captioning
+caption = ai.caption_image("path/to/image.jpg")
+print(f"Caption: {caption}")
+
+# 6. Image to Story
+result = ai.image_to_story("path/to/image.jpg")
+print(f"Caption: {result['caption']}")
+print(f"Story: {result['story']}")
 ```
 
-## 📚 Részletes Funkció Leírások
+## 📚 Detailed Feature Descriptions
 
-### 1. Sentiment Analysis (Hangulatelemzés)
+### 1. Sentiment Analysis
 
-**Mit csinál?**
-Meghatározza egy szöveg érzelmi töltetét (pozitív, negatív, semleges).
+**What does it do?**
+Determines the emotional tone of text (positive, negative, neutral).
 
-**Használati példák:**
-- Vásárlói vélemények elemzése
-- Közösségi média posztok hangulatelemzése
-- Ügyfélszolgálati visszajelzések értékelése
-- Termékrecenziók automatikus kategorizálása
+**Use cases:**
+- Customer review analysis
+- Social media post sentiment analysis
+- Customer service feedback evaluation
+- Automatic product review categorization
 
-**Python kód:**
+**Python code:**
 ```python
 ai = HuggingFaceAI()
 result = ai.analyze_sentiment("I love this product!")
-# Eredmény: {'label': 'POSITIVE', 'score': 0.9998}
+# Result: {'label': 'POSITIVE', 'score': 0.9998}
 ```
 
-**Parancssorból:**
+**From command line:**
 ```bash
 python ai_app.py --interactive
-# Válassz 1-et, add meg a szöveget
+# Choose 1, enter the text
 ```
 
-**Kimenet értelmezése:**
-- `label`: POSITIVE vagy NEGATIVE
-- `score`: 0-1 közötti bizonyossági érték (pl. 0.95 = 95%)
+**Output interpretation:**
+- `label`: POSITIVE or NEGATIVE
+- `score`: Confidence value between 0-1 (e.g., 0.95 = 95%)
 
-### 2. Question Answering (Kérdés-Válasz)
+### 2. Question Answering
 
-**Mit csinál?**
-Megválaszol kérdéseket egy adott szöveges kontextus alapján.
+**What does it do?**
+Answers questions based on a given text context.
 
-**Használati példák:**
-- FAQ rendszerek
-- Dokumentum-alapú keresés
-- Tudásbázis lekérdezések
-- Oktatási anyagok feldolgozása
+**Use cases:**
+- FAQ systems
+- Document-based search
+- Knowledge base queries
+- Educational material processing
 
-**Python kód:**
+**Python code:**
 ```python
 ai = HuggingFaceAI()
 context = """
@@ -220,57 +244,57 @@ access data and use it to learn for themselves.
 """
 question = "What is machine learning?"
 answer = ai.answer_question(context, question)
-print(f"Válasz: {answer['answer']}")
-print(f"Bizonyosság: {answer['score']:.2%}")
+print(f"Answer: {answer['answer']}")
+print(f"Confidence: {answer['score']:.2%}")
 ```
 
-**Tippek a jobb eredményekért:**
-- A kontextusban szerepeljen a válasz
-- Világos, konkrét kérdéseket tegyél fel
-- Kerüld a túl általános kérdéseket
+**Tips for better results:**
+- The answer should be present in the context
+- Ask clear, specific questions
+- Avoid overly general questions
 
-### 3. Text Summarization (Szövegösszefoglalás)
+### 3. Text Summarization
 
-**Mit csinál?**
-Hosszú szövegeket rövid, lényegre törő összefoglalásokká alakít.
+**What does it do?**
+Converts long texts into short, concise summaries.
 
-**Használati példák:**
-- Hírcikkek összefoglalása
-- Kutatási anyagok rövidítése
-- Meeting jegyzőkönyvek összegzése
-- Email-ek főbb pontjainak kiemelése
+**Use cases:**
+- News article summarization
+- Research material shortening
+- Meeting notes summarization
+- Highlighting main points of emails
 
-**Python kód:**
+**Python code:**
 ```python
 ai = HuggingFaceAI()
 long_article = """
-[Több bekezdésnyi hosszú szöveg...]
+[Multiple paragraphs of long text...]
 """
 summary = ai.summarize_text(
     long_article,
-    max_length=130,  # Maximum összefoglaló hossz
-    min_length=30     # Minimum összefoglaló hossz
+    max_length=130,  # Maximum summary length
+    min_length=30     # Minimum summary length
 )
 print(summary)
 ```
 
-**Paraméterek beállítása:**
-- `max_length`: Maximum token szám az összefoglalásban (alapértelmezett: 130)
-- `min_length`: Minimum token szám (alapértelmezett: 30)
-- Hosszabb szövegekhez növeld a `max_length` értéket
+**Parameter settings:**
+- `max_length`: Maximum token count in summary (default: 130)
+- `min_length`: Minimum token count (default: 30)
+- Increase `max_length` for longer texts
 
-### 4. Image Classification (Képosztályozás)
+### 4. Image Classification
 
-**Mit csinál?**
-Felismeri és kategorizálja a képeken található objektumokat.
+**What does it do?**
+Recognizes and categorizes objects found in images.
 
-**Használati példák:**
-- Termékfotók automatikus címkézése
-- Állatfajok azonosítása
-- Tárgyi eszközök felismerése
-- Minőségellenőrzés képek alapján
+**Use cases:**
+- Automatic product photo labeling
+- Animal species identification
+- Object recognition
+- Image-based quality control
 
-**Python kód - Lokális fájl:**
+**Python code - Local file:**
 ```python
 ai = HuggingFaceAI()
 results = ai.classify_image("cat.jpg")
@@ -278,58 +302,111 @@ for i, result in enumerate(results[:5], 1):
     print(f"{i}. {result['label']}: {result['score']:.2%}")
 ```
 
-**Python kód - URL-ről:**
+**Python code - From URL:**
 ```python
 ai = HuggingFaceAI()
 url = "https://example.com/dog.jpg"
 results = ai.classify_image(url)
-print(f"Top eredmény: {results[0]['label']}")
+print(f"Top result: {results[0]['label']}")
 ```
 
-**Támogatott formátumok:**
+**Supported formats:**
 - JPG/JPEG
 - PNG
 - BMP
 - GIF
 - WEBP
 
-## ⚙️ Haladó Beállítások
+### 5. Image Captioning (BLIP)
 
-### GPU Használat
+**What does it do?**
+Generates natural language descriptions of images using the BLIP model.
 
-Ha van NVIDIA GPU-d és telepítve van a CUDA:
+**Use cases:**
+- Accessibility for visually impaired users
+- Automatic image tagging
+- Content moderation
+- Children's educational apps
+
+**Python code:**
+```python
+ai = HuggingFaceAI()
+caption = ai.caption_image("playground.jpg")
+print(f"Caption: {caption}")
+# Example: "children playing on a playground with slides and swings"
+```
+
+### 6. Image to Story (for Children)
+
+**What does it do?**
+Takes an image and generates a short, cute children's story based on it.
+
+**How it works:**
+1. First, the BLIP model creates a detailed description of the image
+2. Then, GPT-2 generates a 6-8 sentence children's story based on that description
+
+**Use cases:**
+- Children's educational apps
+- Bedtime story generation
+- Creative writing assistance
+- Interactive learning tools
+
+**Python code:**
+```python
+ai = HuggingFaceAI()
+result = ai.image_to_story("forest_scene.jpg")
+print(f"Caption: {result['caption']}")
+print(f"Story: {result['story']}")
+```
+
+**Example output:**
+```
+Caption: a happy girl walking in a forest with a friendly dog
+
+Story: Once upon a time, there was a happy girl named Emma who loved 
+to explore the forest near her home. One sunny morning, she decided 
+to take her best friend, a friendly golden dog named Max, on an 
+adventure. They walked through the tall trees, listening to the 
+birds singing sweet melodies...
+```
+
+## ⚙️ Advanced Settings
+
+### GPU Usage
+
+If you have an NVIDIA GPU and CUDA installed:
 
 ```python
 import torch
-print(f"GPU elérhető: {torch.cuda.is_available()}")
-print(f"GPU név: {torch.cuda.get_device_name(0)}")
+print(f"GPU available: {torch.cuda.is_available()}")
+print(f"GPU name: {torch.cuda.get_device_name(0)}")
 ```
 
-Az alkalmazás automatikusan használja a GPU-t, ha elérhető.
+The application automatically uses GPU if available.
 
-### Különböző Modellek Használata
+### Using Different Models
 
-Lecserélheted az alapértelmezett modelleket:
+You can replace the default models:
 
 ```python
 from transformers import pipeline
 
-# Magyar nyelvű sentiment analysis
+# Multilingual sentiment analysis
 sentiment = pipeline(
     "sentiment-analysis",
     model="nlptown/bert-base-multilingual-uncased-sentiment"
 )
 
-# Fordítás angolról magyarra
+# Translation from English to other languages
 translator = pipeline(
     "translation",
-    model="Helsinki-NLP/opus-mt-en-hu"
+    model="Helsinki-NLP/opus-mt-en-de"
 )
 ```
 
-### Batch Feldolgozás (Több Elem Egyszerre)
+### Batch Processing (Multiple Items at Once)
 
-Hatékonyabb több elem feldolgozásakor:
+More efficient when processing multiple items:
 
 ```python
 ai = HuggingFaceAI()
@@ -339,149 +416,128 @@ texts = [
     "Third text to analyze"
 ]
 
-# A pipeline támogatja a batch-et
+# The pipeline supports batching
 for text in texts:
     result = ai.analyze_sentiment(text)
     print(f"{text}: {result['label']}")
 ```
 
-## 🔍 Hibaelhárítás
+## 🔍 Troubleshooting
 
-### Probléma: Modellek nem töltődnek le
+### Problem: Models don't download
 
-**Megoldások:**
-1. Ellenőrizd az internet kapcsolatot
-2. Próbáld meg VPN nélkül
-3. Tisztítsd a cache-t: `rm -rf ~/.cache/huggingface/`
-4. Manuális letöltés: `huggingface-cli download model_name`
+**Solutions:**
+1. Check internet connection
+2. Try without VPN
+3. Clear cache: `rm -rf ~/.cache/huggingface/`
+4. Manual download: `huggingface-cli download model_name`
 
-### Probléma: OutOfMemoryError
+### Problem: OutOfMemoryError
 
-**Megoldások:**
-1. Használj kisebb modelleket
-2. Csökkentsd a batch size-t
-3. Zárj be más programokat
-4. GPU esetén csökkentsd a `max_length` paramétert
+**Solutions:**
+1. Use smaller models
+2. Reduce batch size
+3. Close other programs
+4. For GPU, reduce `max_length` parameter
 
-### Probléma: Lassú feldolgozás
+### Problem: Slow processing
 
-**Megoldások:**
-1. Használj GPU-t, ha van
-2. Csökkentsd a modell méretét
-3. Batch feldolgozás használata
-4. Quantized modellek használata
+**Solutions:**
+1. Use GPU if available
+2. Reduce model size
+3. Use batch processing
+4. Use quantized models
 
-### Probléma: Import Error
+### Problem: Import Error
 
 ```bash
-# Újratelepítés
+# Reinstall
 pip uninstall transformers torch
 pip install -r requirements.txt
 
-# Vagy specifikus verziók
+# Or specific versions
 pip install transformers==4.35.0 torch==2.0.0
 ```
 
-## 📊 Teljesítmény Optimalizálás
+## 📊 Performance Optimization
 
-### CPU vs GPU Sebesség
+### CPU vs GPU Speed
 
-| Feladat | CPU (Core i7) | GPU (RTX 3060) |
-|---------|---------------|----------------|
+| Task | CPU (Core i7) | GPU (RTX 3060) |
+|------|---------------|----------------|
 | Sentiment Analysis | ~0.5s | ~0.1s |
 | Question Answering | ~1.0s | ~0.2s |
 | Summarization | ~3.0s | ~0.5s |
 | Image Classification | ~1.5s | ~0.3s |
+| Image Captioning | ~2.0s | ~0.4s |
+| Story Generation | ~5.0s | ~1.0s |
 
-### Memória Használat
+### Memory Usage
 
 - Sentiment Analysis: ~1 GB RAM
 - Question Answering: ~1.5 GB RAM
 - Summarization: ~2 GB RAM
 - Image Classification: ~1 GB RAM
-
-## 🌍 Nemzetközi Használat
-
-### Magyar Nyelv Támogatás
-
-```python
-from transformers import pipeline
-
-# Magyar szöveg elemzése
-sentiment_hu = pipeline(
-    "sentiment-analysis",
-    model="nlptown/bert-base-multilingual-uncased-sentiment"
-)
-
-result = sentiment_hu("Ez egy fantasztikus termék!")
-print(result)
-```
-
-### Fordítás
-
-```python
-# Angol -> Magyar
-translator = pipeline("translation_en_to_hu", model="Helsinki-NLP/opus-mt-en-hu")
-result = translator("Hello, how are you?")
-print(result[0]['translation_text'])  # "Szia, hogy vagy?"
-```
+- Image Captioning (BLIP): ~2 GB RAM
+- Story Generation (GPT-2): ~1.5 GB RAM
 
 ## 📝 Best Practices
 
-1. **Modellek Cache-elése**: Az első futtatás után a modellek gyorsabban betöltődnek
-2. **Hibakezelés**: Mindig használj try-except blokkokat production kódban
-3. **Batch Processing**: Több elem feldolgozásakor használj batch-eket
-4. **Resource Management**: Használj context managereket vagy `del` objektumokat, ha már nincs rájuk szükség
-5. **Logging**: Implementálj megfelelő loggolást debug célokra
+1. **Model Caching**: After the first run, models load faster
+2. **Error Handling**: Always use try-except blocks in production code
+3. **Batch Processing**: Use batches when processing multiple items
+4. **Resource Management**: Use context managers or `del` objects when no longer needed
+5. **Logging**: Implement proper logging for debug purposes
 
-## 🎓 További Tanulási Források
+## 🎓 Additional Learning Resources
 
-- [Hugging Face Dokumentáció](https://huggingface.co/docs)
+- [Hugging Face Documentation](https://huggingface.co/docs)
 - [Transformers Tutorial](https://huggingface.co/course)
 - [Model Hub](https://huggingface.co/models)
 - [Datasets Hub](https://huggingface.co/datasets)
 
-## 💡 Projekt Ötletek
+## 💡 Project Ideas
 
-1. **Automatikus Email Rendező**: Kategorizálja emaileket sentiment alapján
-2. **FAQ Bot**: Építs chatbotot a question answering használatával
-3. **Hírek Összefoglalója**: Napi hírek automatikus összegzése
-4. **Fotó Katalogizáló**: Automatikus képcímkézés nagy fotógyűjteményekhez
-5. **Közösségi Média Monitor**: Márka említések sentiment elemzése
+1. **Automatic Email Sorter**: Categorize emails based on sentiment
+2. **FAQ Bot**: Build a chatbot using question answering
+3. **News Summarizer**: Automatic daily news summarization
+4. **Photo Cataloger**: Automatic image tagging for large photo collections
+5. **Social Media Monitor**: Sentiment analysis of brand mentions
+6. **Children's Story App**: Generate bedtime stories from photos
 
-## 🤝 Közreműködés és Fejlesztés
+## 🤝 Contributing
 
-Ha szeretnél hozzájárulni a projekthez:
+If you want to contribute to the project:
 
-1. Fork-old a repository-t
-2. Készíts egy új branch-et (`git checkout -b feature/UjFunkció`)
-3. Commit-old a változtatásokat (`git commit -m 'Új funkció hozzáadása'`)
-4. Push-old a branch-et (`git push origin feature/UjFunkció`)
-5. Nyiss egy Pull Request-et
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/NewFeature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push the branch (`git push origin feature/NewFeature`)
+5. Open a Pull Request
 
-## 📄 Licenc
+## 📄 License
 
-MIT License - Lásd a LICENSE fájlt a részletekért.
+MIT License - See LICENSE file for details.
 
-## ❓ Gyakori Kérdések (FAQ)
+## ❓ Frequently Asked Questions (FAQ)
 
-**K: Működik offline is?**  
-V: Igen, miután egyszer letöltötted a modelleket.
+**Q: Does it work offline?**  
+A: Yes, after you've downloaded the models once.
 
-**K: Mennyire pontosak az eredmények?**  
-V: A modellek általában 85-95% pontosságúak, de ez függ a feladattól és a bemenet minőségétől.
+**Q: How accurate are the results?**  
+A: The models are generally 85-95% accurate, but it depends on the task and input quality.
 
-**K: Támogat más nyelveket is?**  
-V: Igen, cserélheted a modelleket multilingual verziókra.
+**Q: Does it support other languages?**  
+A: Yes, you can swap the models for multilingual versions.
 
-**K: Használhatom kereskedelmi célokra?**  
-V: Ellenőrizd az egyes modellek licencét a Hugging Face Hub-on.
+**Q: Can I use it for commercial purposes?**  
+A: Check each model's license on Hugging Face Hub.
 
-**K: Mennyire biztonságos?**  
-V: A modellek lokálisan futnak, nincs adatküldés külső szerverekre.
+**Q: How secure is it?**  
+A: The models run locally, no data is sent to external servers.
 
 ---
 
-**Utolsó frissítés:** 2024. november  
-**Verzió:** 1.0  
-**Szerző:** ML Practice Research Team
+**Last Updated:** November 2024  
+**Version:** 2.0  
+**Author:** ML Practice Research Team

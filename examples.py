@@ -1,47 +1,47 @@
 """
-Hugging Face AI Alkalmazás - Példa Használat
+Hugging Face AI Application - Example Usage
 
-Ez a fájl bemutatja, hogyan használható az ai_app.py különböző AI feladatokra.
-Tartalma: kód példák és várható eredmények dokumentálása.
+This file demonstrates how to use ai_app.py for different AI tasks.
+Contents: code examples and expected results documentation.
 """
 
 # ============================================================================
-# 1. SENTIMENT ANALYSIS - Hangulatelemzés
+# 1. SENTIMENT ANALYSIS - Emotional Tone Analysis
 # ============================================================================
 
 """
-Példa használat:
+Example usage:
 
 from ai_app import HuggingFaceAI
 
 ai = HuggingFaceAI()
 
-# Pozitív szöveg elemzése
+# Analyzing positive text
 result = ai.analyze_sentiment("I love this amazing technology!")
 print(result)
-# Várható kimenet:
+# Expected output:
 # {'label': 'POSITIVE', 'score': 0.9998}
 
-# Negatív szöveg elemzése
+# Analyzing negative text
 result = ai.analyze_sentiment("This is terrible and disappointing.")
 print(result)
-# Várható kimenet:
+# Expected output:
 # {'label': 'NEGATIVE', 'score': 0.9997}
 
-# Semleges szöveg elemzése
+# Analyzing neutral text
 result = ai.analyze_sentiment("The weather is normal today.")
 print(result)
-# Várható kimenet:
+# Expected output:
 # {'label': 'NEUTRAL', 'score': 0.8523}
 """
 
 
 # ============================================================================
-# 2. QUESTION ANSWERING - Kérdés-válasz rendszer
+# 2. QUESTION ANSWERING - Question-Answer System
 # ============================================================================
 
 """
-Példa használat:
+Example usage:
 
 from ai_app import HuggingFaceAI
 
@@ -55,40 +55,40 @@ to share machine learning models and datasets. The company was founded in 2016
 in New York City and is now based in Paris, France.
 '''
 
-# Kérdés 1: Alapítás éve
+# Question 1: Year of founding
 question = "When was Hugging Face founded?"
 answer = ai.answer_question(context, question)
-print(f"Kérdés: {question}")
-print(f"Válasz: {answer['answer']}")
-print(f"Bizonyosság: {answer['score']:.2%}")
-# Várható kimenet:
-# Kérdés: When was Hugging Face founded?
-# Válasz: 2016
-# Bizonyosság: 99.87%
+print(f"Question: {question}")
+print(f"Answer: {answer['answer']}")
+print(f"Confidence: {answer['score']:.2%}")
+# Expected output:
+# Question: When was Hugging Face founded?
+# Answer: 2016
+# Confidence: 99.87%
 
-# Kérdés 2: Helyszín
+# Question 2: Location
 question = "Where is Hugging Face based?"
 answer = ai.answer_question(context, question)
-print(f"Kérdés: {question}")
-print(f"Válasz: {answer['answer']}")
-# Várható kimenet:
-# Válasz: Paris, France
+print(f"Question: {question}")
+print(f"Answer: {answer['answer']}")
+# Expected output:
+# Answer: Paris, France
 
-# Kérdés 3: Termék információ
+# Question 3: Product information
 question = "What is Transformers library used for?"
 answer = ai.answer_question(context, question)
-print(f"Válasz: {answer['answer']}")
-# Várható kimenet:
-# Válasz: natural language processing applications
+print(f"Answer: {answer['answer']}")
+# Expected output:
+# Answer: natural language processing applications
 """
 
 
 # ============================================================================
-# 3. TEXT SUMMARIZATION - Szöveg összefoglalás
+# 3. TEXT SUMMARIZATION - Text Summary
 # ============================================================================
 
 """
-Példa használat:
+Example usage:
 
 from ai_app import HuggingFaceAI
 
@@ -111,14 +111,14 @@ the highest level in strategic game systems.
 '''
 
 summary = ai.summarize_text(long_text)
-print(f"Eredeti szöveg hossza: {len(long_text)} karakter")
-print(f"Összefoglalás hossza: {len(summary)} karakter")
-print(f"Összefoglalás: {summary}")
+print(f"Original text length: {len(long_text)} characters")
+print(f"Summary length: {len(summary)} characters")
+print(f"Summary: {summary}")
 
-# Várható kimenet:
-# Eredeti szöveg hossza: 869 karakter
-# Összefoglalás hossza: 145 karakter
-# Összefoglalás: Artificial intelligence (AI) is intelligence demonstrated by 
+# Expected output:
+# Original text length: 869 characters
+# Summary length: 145 characters
+# Summary: Artificial intelligence (AI) is intelligence demonstrated by 
 # machines. AI research has been defined as the field of study of intelligent 
 # agents. AI applications include advanced web search engines, recommendation 
 # systems, self-driving cars and more.
@@ -126,37 +126,37 @@ print(f"Összefoglalás: {summary}")
 
 
 # ============================================================================
-# 4. IMAGE CLASSIFICATION - Képosztályozás
+# 4. IMAGE CLASSIFICATION - Image Classification
 # ============================================================================
 
 """
-Példa használat:
+Example usage:
 
 from ai_app import HuggingFaceAI
 
 ai = HuggingFaceAI()
 
-# Helyi kép fájl elemzése
+# Analyzing a local image file
 results = ai.classify_image("path/to/cat.jpg")
-print("Top 3 eredmény:")
+print("Top 3 results:")
 for i, result in enumerate(results[:3], 1):
     print(f"{i}. {result['label']}: {result['score']:.2%}")
 
-# Várható kimenet (macskás kép esetén):
-# Top 3 eredmény:
+# Expected output (for a cat image):
+# Top 3 results:
 # 1. tabby cat: 45.32%
 # 2. Egyptian cat: 32.18%
 # 3. tiger cat: 12.45%
 
-# URL-ről történő kép elemzése
+# Analyzing an image from URL
 image_url = "https://example.com/dog.jpg"
 results = ai.classify_image(image_url)
-print("Top 5 eredmény:")
+print("Top 5 results:")
 for i, result in enumerate(results[:5], 1):
     print(f"{i}. {result['label']}: {result['score']:.2%}")
 
-# Várható kimenet (kutyás kép esetén):
-# Top 5 eredmény:
+# Expected output (for a dog image):
+# Top 5 results:
 # 1. golden retriever: 67.89%
 # 2. Labrador retriever: 18.23%
 # 3. cocker spaniel: 5.67%
@@ -166,60 +166,123 @@ for i, result in enumerate(results[:5], 1):
 
 
 # ============================================================================
-# 5. INTERAKTÍV HASZNÁLAT - Parancssorból
+# 5. IMAGE CAPTIONING - Generate Image Descriptions (BLIP)
 # ============================================================================
 
 """
-Az alkalmazás két módban futtatható:
+Example usage:
 
-1. DEMO MÓD (alapértelmezett):
+from ai_app import HuggingFaceAI
+
+ai = HuggingFaceAI()
+
+# Generate caption for a local image
+caption = ai.caption_image("path/to/forest.jpg")
+print(f"Caption: {caption}")
+
+# Expected output:
+# Caption: a beautiful forest with sunlight filtering through the trees
+
+# Generate caption from URL
+image_url = "https://example.com/playground.jpg"
+caption = ai.caption_image(image_url)
+print(f"Caption: {caption}")
+
+# Expected output:
+# Caption: children playing on a colorful playground
+"""
+
+
+# ============================================================================
+# 6. IMAGE TO STORY - Generate Children's Stories from Images
+# ============================================================================
+
+"""
+Example usage:
+
+from ai_app import HuggingFaceAI
+
+ai = HuggingFaceAI()
+
+# Generate a story from an image
+result = ai.image_to_story("path/to/kids_forest.jpg")
+print(f"Caption: {result['caption']}")
+print(f"Story: {result['story']}")
+
+# Expected output:
+# Caption: a happy girl walking in a forest with a friendly dog
+# Story: Once upon a time, there was a happy girl named Emma who loved 
+# exploring the forest near her home. One sunny morning, she took her 
+# best friend, a fluffy golden dog named Max, on an adventure. They 
+# walked through tall trees, listening to birds singing sweet songs.
+# Emma found beautiful flowers and shared them with Max. Together they 
+# discovered a sparkling stream where fish swam playfully. As the sun 
+# began to set, they headed home, tired but happy from their wonderful day.
+
+# You can also provide a URL
+result = ai.image_to_story("https://example.com/animal.jpg", max_story_length=250)
+print(f"Caption: {result['caption']}")
+print(f"Story: {result['story']}")
+"""
+
+
+# ============================================================================
+# 7. INTERACTIVE USAGE - From Command Line
+# ============================================================================
+
+"""
+The application can run in two modes:
+
+1. DEMO MODE (default):
    python ai_app.py
    
-   Ez automatikusan végigfuttatja az összes demo funkciót és megmutatja
-   az eredményeket.
+   This automatically runs through all demo features and shows
+   the results.
 
-2. INTERAKTÍV MÓD:
+2. INTERACTIVE MODE:
    python ai_app.py --interactive
    
-   Ez elindít egy interaktív menüt, ahol manuálisan kiválaszthatod,
-   melyik funkciót szeretnéd használni és saját adatokat adhatsz meg.
+   This starts an interactive menu where you can manually select
+   which feature you want to use and enter your own data.
    
-   Menü opciók:
-   1. Sentiment Analysis - Saját szöveg hangulatelemzése
-   2. Question Answering - Kérdés megválaszolása kontextus alapján
-   3. Text Summarization - Hosszú szöveg összefoglalása
-   4. Image Classification - Kép objektumfelismerés
-   0. Kilépés
+   Menu options:
+   1. Sentiment Analysis - Analyze your own text sentiment
+   2. Question Answering - Answer questions based on context
+   3. Text Summarization - Summarize long text
+   4. Image Classification - Object recognition in images
+   5. Image Captioning (BLIP) - Generate image descriptions
+   6. Image to Story - Generate children's stories from images
+   0. Exit
 """
 
 
 # ============================================================================
-# 6. PYTHON KÓDBÓL TÖRTÉNŐ HASZNÁLAT
+# 8. USING FROM PYTHON CODE
 # ============================================================================
 
 """
-Teljes példa program:
+Complete example program:
 
 #!/usr/bin/env python3
 from ai_app import HuggingFaceAI
 
 def main():
-    # AI objektum létrehozása
+    # Create AI object
     ai = HuggingFaceAI()
     
-    # 1. Vásárlói vélemények elemzése
+    # 1. Analyzing customer reviews
     reviews = [
         "This product is amazing! Best purchase ever!",
         "Terrible quality, broke after one day.",
         "It's okay, nothing special."
     ]
     
-    print("Vásárlói vélemények elemzése:")
+    print("Customer review analysis:")
     for review in reviews:
         result = ai.analyze_sentiment(review)
         print(f"  '{review[:30]}...' -> {result['label']}")
     
-    # 2. FAQ rendszer
+    # 2. FAQ system
     faq_context = '''
     Our store is open Monday to Friday from 9 AM to 6 PM.
     We offer free shipping on orders over $50.
@@ -232,28 +295,37 @@ def main():
         "What is the return policy?"
     ]
     
-    print("\nFAQ válaszok:")
+    print("\nFAQ answers:")
     for q in questions:
         answer = ai.answer_question(faq_context, q)
         print(f"  Q: {q}")
         print(f"  A: {answer['answer']}")
     
-    # 3. Termékleírás összefoglalása
+    # 3. Product description summarization
     product_desc = '''
-    [Hosszú termékleírás szövege...]
+    [Long product description text...]
     '''
     summary = ai.summarize_text(product_desc)
-    print(f"\nTermékösszefoglalás: {summary}")
+    print(f"\nProduct summary: {summary}")
     
-    # 4. Termékképek automatikus címkézése
+    # 4. Automatic product image tagging
     images = ["product1.jpg", "product2.jpg", "product3.jpg"]
-    print("\nTermékképek elemzése:")
+    print("\nProduct image analysis:")
     for img in images:
         try:
             results = ai.classify_image(img)
             print(f"  {img}: {results[0]['label']}")
         except Exception as e:
-            print(f"  {img}: Hiba - {e}")
+            print(f"  {img}: Error - {e}")
+    
+    # 5. Generate children's story from image
+    print("\nChildren's story generation:")
+    try:
+        result = ai.image_to_story("kids_playing.jpg")
+        print(f"  Caption: {result['caption']}")
+        print(f"  Story: {result['story'][:200]}...")
+    except Exception as e:
+        print(f"  Error: {e}")
 
 if __name__ == "__main__":
     main()
@@ -261,34 +333,40 @@ if __name__ == "__main__":
 
 
 # ============================================================================
-# 7. HASZNOS TIPPEK ÉS MEGJEGYZÉSEK
+# 9. USEFUL TIPS AND NOTES
 # ============================================================================
 
 """
-MODELLEK LETÖLTÉSE:
-- Az első futtatáskor a modellek automatikusan letöltődnek a Hugging Face-ről
-- A modellek a ~/.cache/huggingface/ könyvtárba kerülnek mentésre
-- Nagyobb modellek esetén a letöltés több percig is tarthat
-- Internet kapcsolat szükséges az első futtatáshoz
+MODEL DOWNLOADS:
+- On the first run, models are automatically downloaded from Hugging Face
+- Models are saved to ~/.cache/huggingface/ directory
+- Larger models may take several minutes to download
+- Internet connection is required for the first run
 
-TELJESÍTMÉNY:
-- GPU használata jelentősen felgyorsítja a feldolgozást
-- CPU-n is működik, de lassabban
-- A pipeline() automatikusan felismeri és használja a GPU-t, ha elérhető
+PERFORMANCE:
+- GPU usage significantly speeds up processing
+- Works on CPU too, but slower
+- The pipeline() automatically detects and uses GPU if available
 
-TESTRESZABÁS:
-- Különböző modellek használhatók a pipeline() függvényben
-- Példa: pipeline("sentiment-analysis", model="nlptown/bert-base-multilingual-uncased-sentiment")
-- Magyar nyelvre is vannak modellek: keress "hungarian" kulcsszóra a Hugging Face-en
+CUSTOMIZATION:
+- Different models can be used with the pipeline() function
+- Example: pipeline("sentiment-analysis", model="nlptown/bert-base-multilingual-uncased-sentiment")
+- There are models for many languages available on Hugging Face
 
-HIBAELHÁRÍTÁS:
-- Ha nem töltődnek le a modellek, ellenőrizd az internet kapcsolatot
-- OutOfMemory hiba esetén használj kisebb modelleket
-- CUDA hibák esetén ellenőrizd a PyTorch és CUDA kompatibilitást
+TROUBLESHOOTING:
+- If models don't download, check your internet connection
+- For OutOfMemory errors, use smaller models
+- For CUDA errors, check PyTorch and CUDA compatibility
 
-TOVÁBBI FUNKCIÓK:
-- Translation (fordítás): pipeline("translation", model="Helsinki-NLP/opus-mt-en-hu")
+ADDITIONAL FEATURES:
+- Translation: pipeline("translation", model="Helsinki-NLP/opus-mt-en-de")
 - Named Entity Recognition: pipeline("ner")
 - Text Generation: pipeline("text-generation")
 - Zero-shot Classification: pipeline("zero-shot-classification")
+
+IMAGE TO STORY FEATURE:
+- Uses BLIP (Salesforce/blip-image-captioning-base) for image captioning
+- Uses GPT-2 for story generation
+- Generates kid-friendly 6-8 sentence stories
+- Works with both local files and URLs
 """
