@@ -2,3 +2,6 @@ python-dotenv
 transformers
 torch
 pillow
+scipy
+sentencepiece
+sacremoses
