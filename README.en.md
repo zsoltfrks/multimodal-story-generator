@@ -1,5 +1,6 @@
 # Multimodal Story Generator
 
+
 This project is an AI-based application that generates short stories for children from images, translates them into Hungarian, and reads aloud the English version.
 
 ## Features and How it Works
