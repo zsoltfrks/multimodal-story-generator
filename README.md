@@ -1,4 +1,4 @@
-# Multimodális Történetgenerátor
+# Történet generátor
 
 Ez a projekt egy mesterséges intelligencia alapú alkalmazás, amely képekből generál rövid történeteket gyerekeknek. A program először szöveges leírást készít egy képről, majd ebből a leírásból egy mesét ír.
 
