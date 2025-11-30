@@ -1,8 +1,5 @@
-from dotenv import load_dotenv, find_dotenv
 from transformers import pipeline
 from scipy.io.wavfile import write
-
-load_dotenv(find_dotenv())
 
 # Salesforce/blip-image-captioning-base hasznalata a kep szovegge alakitashoz
 def imgToText(path):
@@ -10,7 +7,7 @@ def imgToText(path):
     img_to_text = pipeline("image-to-text", model="Salesforce/blip-image-captioning-base")
     
     text = img_to_text(path)[0]['generated_text'] # Az elso talalat kinyerese, kivagjuk a szoveget (ne keruljon bele felesleges adat)
-    
+
     print("")
     print(text)
     print("")
