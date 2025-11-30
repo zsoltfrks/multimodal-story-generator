@@ -1,10 +1,10 @@
-# Multimodális Történetgenerátor (Multimodal Story Generator)
+# Történet generátor
 
 Ez a projekt egy mesterséges intelligencia alapú alkalmazás, amely képekből generál rövid történeteket gyerekeknek, lefordítja őket magyarra, és fel is olvassa az angol verziót.
 
 ## Funkciók és Működés
 
-A program egy összetett AI pipeline-t használ, amely a következő lépésekből áll:
+A program egy AI pipeline-t használ, amely a következő lépésekből áll:
 
 1.  **Képfelismerés (Image-to-Text):**
     -   A program elemzi a megadott képet.
