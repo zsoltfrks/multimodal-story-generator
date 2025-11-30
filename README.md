@@ -1,36 +1,65 @@
-# Történet generátor
+# Multimodális Történetgenerátor (Multimodal Story Generator)
 
-Ez a projekt egy mesterséges intelligencia alapú alkalmazás, amely képekből generál rövid történeteket gyerekeknek. A program először szöveges leírást készít egy képről, majd ebből a leírásból egy mesét ír.
+Ez a projekt egy mesterséges intelligencia alapú alkalmazás, amely képekből generál rövid történeteket gyerekeknek, lefordítja őket magyarra, és fel is olvassa az angol verziót.
 
-## Követelmények
-- Python 3.x telepítve
-- Visual Studio Code (ajánlott)
+## Funkciók és Működés
 
-## Projekt megnyitása VS Code-ban
+A program egy összetett AI pipeline-t használ, amely a következő lépésekből áll:
 
-1.  Indítsd el a **Visual Studio Code**-ot.
-2.  Kattints a bal felső sarokban a **File** (Fájl) menüre, majd válaszd az **Open Folder...** (Mappa megnyitása) lehetőséget.
-3.  Keresd meg és válaszd ki a `multimodal-story-generator` mappát.
+1.  **Képfelismerés (Image-to-Text):**
+    -   A program elemzi a megadott képet.
+    -   **Modell:** `Salesforce/blip-image-captioning-base`
+    -   Kimenet: Egy rövid angol leírás a képről (pl. "a river with a mountain in the background").
 
-## Telepítés és Futtatás
+2.  **Történetgenerálás (Story Generation):**
+    -   A képleírás alapján generál egy rövid, gyerekeknek szóló mesét angolul.
+    -   **Modell:** `roneneldan/TinyStories-33M`
+    -   Ez a modell kifejezetten egyszerű, gyerekek számára érthető nyelvezetre van tanítva.
 
-1.  **Terminál megnyitása:**
-    A VS Code-ban kattints a **Terminal** -> **New Terminal** menüpontra.
+3.  **Fordítás (Translation):**
+    -   A generált angol történetet lefordítja magyar nyelvre.
+    -   **Modell:** `Helsinki-NLP/opus-mt-en-hu`
 
-2.  **Csomagok telepítése:**
-    Másold be és futtasd az alábbi parancsot a függőségek telepítéséhez:
+4.  **Szövegfelolvasás (Text-to-Speech):**
+    -   Az eredeti angol történetet hangfájllá alakítja.
+    -   **Modell:** `facebook/mms-tts-eng`
+    -   Kimenet: Egy `story.wav` hangfájl.
+
+## Előfeltételek
+
+-   **Python 3.x** telepítve legyen a gépeden.
+-   Ajánlott fejlesztőkörnyezet: **Visual Studio Code**.
+
+## Telepítés
+
+1.  **Klónozd le a repót** vagy töltsd le a fájlokat.
+2.  Nyisd meg a projekt mappáját VS Code-ban.
+3.  Nyiss egy terminált (Terminal -> New Terminal).
+4.  Telepítsd a szükséges Python csomagokat az alábbi paranccsal:
+
     ```bash
     pip install -r requirements.txt
     ```
 
-3.  **Program indítása:**
-    A futtatáshoz írd be:
+    *Ez telepíti a `transformers`, `torch`, `pillow`, `scipy`, `sentencepiece`, `sacremoses` és `python-dotenv` csomagokat.*
+
+## Használat
+
+1.  Győződj meg róla, hogy van internetkapcsolatod (a modellek letöltéséhez).
+2.  Futtasd a fő programot:
+
     ```bash
     python main.py
     ```
 
-## Működés
-A `main.py` fájlban található kód:
-1.  Letölt egy képet az internetről.
-2.  A `Salesforce/blip-image-captioning-base` modell segítségével leírja, mi van a képen.
-3.  A `roneneldan/TinyStories-33M` modell segítségével generál egy rövid mesét a leírás alapján.
+3.  A program:
+    -   Kiírja a konzolra a kép leírását.
+    -   Kiírja a generált angol mesét.
+    -   Kiírja a magyar fordítást.
+    -   Létrehoz egy `story.wav` fájlt a mappában az angol mese hanganyagával.
+
+## Fájlok szerkezete
+
+-   `main.py`: A fő programkód.
+-   `requirements.txt`: A szükséges Python csomagok listája.
+-   `.env`: Környezeti változók (opcionális, ha API kulcsokat használnál).
