@@ -41,7 +41,7 @@ A program egy AI pipeline-t használ, amely a következő lépésekből áll:
     pip install -r requirements.txt
     ```
 
-    *Ez telepíti a `transformers`, `torch`, `pillow`, `scipy`, `sentencepiece`, `sacremoses` és `python-dotenv` csomagokat.*
+    *Ez telepíti a `transformers`, `torch`, `pillow`, `scipy`, `sentencepiece` és `sacremoses` csomagokat.*
 
 ## Használat
 
@@ -62,4 +62,3 @@ A program egy AI pipeline-t használ, amely a következő lépésekből áll:
 
 -   `main.py`: A fő programkód.
 -   `requirements.txt`: A szükséges Python csomagok listája.
--   `.env`: Környezeti változók (opcionális, ha API kulcsokat használnál).

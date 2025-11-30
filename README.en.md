@@ -42,7 +42,7 @@ The program uses an AI pipeline consisting of the following steps:
     pip install -r requirements.txt
     ```
 
-    *This installs `transformers`, `torch`, `pillow`, `scipy`, `sentencepiece`, `sacremoses`, and `python-dotenv`.*
+    *This installs `transformers`, `torch`, `pillow`, `scipy`, `sentencepiece`, and `sacremoses`.*
 
 ## Usage
 
@@ -63,4 +63,3 @@ The program uses an AI pipeline consisting of the following steps:
 
 -   `main.py`: The main program code.
 -   `requirements.txt`: List of required Python packages.
--   `.env`: Environment variables (optional, if using API keys).
