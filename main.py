@@ -6,7 +6,7 @@ def imgToText(path):
     
     img_to_text = pipeline("image-to-text", model="Salesforce/blip-image-captioning-base")
     
-    text = img_to_text(path)[0]['generated_text'] # Az elso talalat kinyerese, kivagjuk a szoveget (ne keruljon bele felesleges adat)
+    text = img_to_text(path)[0]['generated_text']
 
     print("")
     print(text)
@@ -16,7 +16,7 @@ def imgToText(path):
 
 scenario = imgToText("assets/test.png")
 
-# LLM hasznalata a tortenet generalasahoz
+# Nyelvi modell hasznalata a tortenet generalasahoz
 def generateStory(scenario):
     template = f"Once upon a time, there was {scenario}. "
     
@@ -30,7 +30,7 @@ def generateStory(scenario):
 
     return story
 
-# Fordito modell hasznalata (Angol -> Magyar)
+# Fordito modell hasznalata a tortenet magyarra forditasahoz
 def translateStory(story):
     translator = pipeline("translation", model="Helsinki-NLP/opus-mt-en-hu")
     
@@ -42,7 +42,7 @@ def translateStory(story):
 
     return translated_story
 
-# TTS modell hasznalata a tortenet felolvasasahoz
+# TTS modell hasznalata a tortenet fajlba mentesehez
 def textToSpeech(story):
     tts = pipeline("text-to-speech", model="facebook/mms-tts-eng")
     
@@ -56,4 +56,4 @@ def textToSpeech(story):
 
 story = generateStory(scenario)
 translated_story = translateStory(story)
-textToSpeech(story) # Angol tortenet felolvasasa, mert a TTS modell csak angolul tud normalisan.
+textToSpeech(story) # Angol tortenet lementese fajlba.
