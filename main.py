@@ -44,7 +44,7 @@ def translateStory(story):
 
 # TTS modell hasznalata a tortenet fajlba mentesehez
 def textToSpeech(story):
-    tts = pipeline("text-to-speech", model="facebook/mms-tts-eng")
+    tts = pipeline("text-to-speech", model="facebook/mms-tts-hun")
     
     audio = tts(story)
     
@@ -55,5 +55,5 @@ def textToSpeech(story):
     return audio
 
 story = generateStory(scenario)
-translated_story = translateStory(story)
-textToSpeech(story) # Angol tortenet lementese fajlba.
+translatedStory = translateStory(story)
+textToSpeech(translatedStory) # Magyar tortenet lementese fajlba.
